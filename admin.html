@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Admin - Semparuk Sebangkau</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #eef2f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .box { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); width: 320px; }
+        h2 { text-align: center; color: #333; margin-top: 0; }
+        label { font-size: 14px; font-weight: bold; }
+        input { width: 100%; padding: 10px; margin: 8px 0 16px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background: #007bff; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .pesan-error { color: red; font-size: 14px; text-align: center; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Login Admin</h2>
+    <label>Username</label>
+    <input type="text" id="user" placeholder="Masukkan username">
+    
+    <label>Password</label>
+    <input type="password" id="pass" placeholder="Masukkan password">
+    
+    <button onclick="prosesLogin()">Masuk</button>
+    <div id="error" class="pesan-error"></div>
+</div>
+
+<script>
+function prosesLogin() {
+    const u = document.getElementById('user').value;
+    const p = document.getElementById('pass').value;
+
+    if (u === "admin" && p === "admin123") {
+        sessionStorage.setItem("statusLoginAdmin", "AKTIF");
+        window.location.href = "panel-admin.html";
+    } else {
+        document.getElementById('error').innerText = "Username atau Password salah!";
+    }
+}
+</script>
+
+</body>
+</html>
