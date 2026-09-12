@@ -16,8 +16,12 @@
         </div>
         <form onsubmit="event.preventDefault(); handleLogin();" class="space-y-4">
             <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Username Admin</label>
+                <input type="text" id="username-input" class="w-full p-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-400 bg-slate-50" placeholder="Masukkan username" required>
+            </div>
+            <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Password Admin</label>
-                <input type="password" id="password-input" class="w-full p-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-400 bg-slate-50" placeholder="Masukkan password (default: admin123)" required>
+                <input type="password" id="password-input" class="w-full p-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-400 bg-slate-50" placeholder="Masukkan password" required>
             </div>
             <button type="submit" class="w-full bg-slate-800 text-white py-3 rounded-xl font-medium hover:bg-slate-900 transition">Masuk Panel Admin</button>
         </form>
@@ -80,6 +84,7 @@
 
     <script>
       const scriptURL = 'GANTI_DENGAN_URL_WEB_APP_GOOGLE_SCRIPT_KAMU';
+      const USER_ADMIN = "admin";
       const PASS_ADMIN = "admin123";
 
       if (localStorage.getItem('isAdminLoggedIn') === 'true') {
@@ -87,12 +92,14 @@
       }
 
       function handleLogin() {
-        const input = document.getElementById('password-input').value;
-        if (input === PASS_ADMIN) {
+        const usernameInput = document.getElementById('username-input').value;
+        const passwordInput = document.getElementById('password-input').value;
+
+        if (usernameInput === USER_ADMIN && passwordInput === PASS_ADMIN) {
           localStorage.setItem('isAdminLoggedIn', 'true');
           showDashboard();
         } else {
-          alert('Password admin salah!');
+          alert('Username atau Password admin salah!');
         }
       }
 
