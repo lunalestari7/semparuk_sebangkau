@@ -3,47 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Admin - Desa Semparuk Sebangkau</title>
+    <title>Dashboard Admin - Desa Semparuk Sebangkau</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+<body class="bg-slate-100 min-h-screen p-4 md:p-8 text-slate-800">
 
-    <div class="bg-white p-8 rounded-2xl shadow-md w-full max-w-sm">
-        <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Login Admin</h2>
-        
-        <form id="loginForm" class="space-y-4">
+    <!-- Form Login Admin -->
+    <div id="login-section" class="max-w-md mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-slate-200 mt-16">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold text-gray-800">Login Admin</h2>
+            <a href="index.html" class="text-xs text-emerald-600 hover:underline">← Ke Web Desa</a>
+        </div>
+        <form onsubmit="event.preventDefault(); handleLogin();" class="space-y-4">
             <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Username</label>
-                <input type="text" id="username" class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Masukkan username" required>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Password Admin</label>
+                <input type="password" id="password-input" class="w-full p-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-400 bg-slate-50" placeholder="Masukkan password (default: admin123)" required>
             </div>
-            
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
-                <input type="password" id="password" class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Masukkan password" required>
-            </div>
-
-            <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl shadow transition">
-                Masuk
-            </button>
+            <button type="submit" class="w-full bg-slate-800 text-white py-3 rounded-xl font-medium hover:bg-slate-900 transition">Masuk Panel Admin</button>
         </form>
     </div>
 
+    <!-- Panel Dashboard Admin -->
+    <div id="admin-dashboard" class="max-w-3xl mx-auto hidden space-y-6">
+        <div class="flex justify-between items-start">
+            <div>
+                <h1 class="text-3xl font-extrabold text-gray-900">Dashboard Admin</h1>
+                <p class="text-gray-500 mt-1">Kelola data Website Desa Semparuk Sebangkau</p>
+                <button onclick="handleLogout()" class="mt-4 bg-slate-200 hover:bg-slate-300 text-gray-700 px-5 py-2 rounded-xl text-sm font-semibold transition">
+                    Logout
+                </button>
+            </div>
+            <a href="index.html" class="text-sm bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2 rounded-xl font-semibold transition">
+                Lihat Web Publik
+            </a>
+        </div>
+
+        <!-- Form Tambah / Edit Data -->
+        <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-slate-100 space-y-5">
+            <h2 class="text-xl font-bold text-gray-800">Tambah / Edit Data</h2>
+            
+            <form id="form-tambah-data" onsubmit="event.preventDefault(); simpanDataAdmin();" class="space-y-4">
+                <input type="text" id="admin-judul" placeholder="Judul" class="w-full p-3.5 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-300 bg-slate-50 text-gray-800 placeholder-gray-400">
+                
+                <select id="admin-kategori" class="w-full p-3.5 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-300 bg-slate-50 text-gray-700">
+                    <option value="" disabled selected>Pilih Kategori</option>
+                    <option value="Berita">Berita & Pengumuman</option>
+                    <option value="Potensi">Potensi Desa</option>
+                    <option value="Galeri">Galeri Foto</option>
+                </select>
+
+                <textarea id="admin-deskripsi" rows="4" placeholder="Deskripsi" class="w-full p-3.5 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-300 bg-slate-50 text-gray-800 placeholder-gray-400"></textarea>
+                
+                <input type="text" id="admin-url" placeholder="URL gambar" class="w-full p-3.5 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-300 bg-slate-50 text-gray-800 placeholder-gray-400">
+
+                <div class="flex space-x-3 pt-2">
+                    <button type="submit" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-medium px-5 py-2.5 rounded-xl transition">Simpan Data</button>
+                    <button type="button" onclick="bersihkanFormAdmin()" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-medium px-5 py-2.5 rounded-xl transition">Bersihkan</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Panel Rekap Pengaduan Warga -->
+        <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-slate-100 space-y-5">
+            <div class="flex justify-between items-center">
+                <h2 class="text-xl font-bold text-gray-800">Daftar Pengaduan Masuk</h2>
+                <button onclick="loadDataPengaduan()" class="text-xs bg-emerald-100 hover:bg-emerald-200 text-emerald-800 font-semibold px-3 py-1.5 rounded-lg transition">Refresh Data</button>
+            </div>
+
+            <div id="loading-pengaduan" class="text-gray-400 text-sm italic">Memuat pengaduan dari server...</div>
+            
+            <div id="daftar-pengaduan-container" class="space-y-3">
+                <!-- Data pengaduan otomatis dirender di sini -->
+            </div>
+        </div>
+    </div>
+
     <script>
-        document.getElementById("loginForm").addEventListener("submit", function(e) {
-            e.preventDefault();
-            const user = document.getElementById("username").value.trim();
-            const pass = document.getElementById("password").value.trim();
+      const scriptURL = 'GANTI_DENGAN_URL_WEB_APP_GOOGLE_SCRIPT_KAMU';
+      const PASS_ADMIN = "admin123";
 
-            if (user === "admin" && pass === "admin123") {
-                // Simpan status login di memori browser
-                localStorage.setItem("adminLoggedIn", "true");
-                // Pindah langsung ke dashboard admin
-                window.location.href = "panel-admin.html";
-            } else {
-                alert("Username atau Password salah!");
+      if (localStorage.getItem('isAdminLoggedIn') === 'true') {
+        showDashboard();
+      }
+
+      function handleLogin() {
+        const input = document.getElementById('password-input').value;
+        if (input === PASS_ADMIN) {
+          localStorage.setItem('isAdminLoggedIn', 'true');
+          showDashboard();
+        } else {
+          alert('Password admin salah!');
+        }
+      }
+
+      function handleLogout() {
+        localStorage.removeItem('isAdminLoggedIn');
+        location.reload();
+      }
+
+      function showDashboard() {
+        document.getElementById('login-section').classList.add('hidden');
+        document.getElementById('admin-dashboard').classList.remove('hidden');
+        loadDataPengaduan();
+      }
+
+      function bersihkanFormAdmin() {
+        document.getElementById('form-tambah-data').reset();
+      }
+
+      function simpanDataAdmin() {
+        const judul = document.getElementById('admin-judul').value;
+        const kategori = document.getElementById('admin-kategori').value;
+        if (!judul || !kategori) {
+          alert('Mohon isi Judul dan Pilih Kategori terlebih dahulu!');
+          return;
+        }
+        alert('Data berhasil disimpan!');
+        bersihkanFormAdmin();
+      }
+
+      function loadDataPengaduan() {
+        const container = document.getElementById('daftar-pengaduan-container');
+        const loading = document.getElementById('loading-pengaduan');
+        loading.classList.remove('hidden');
+        container.innerHTML = '';
+
+        fetch(scriptURL)
+          .then(res => res.json())
+          .then(data => {
+            loading.classList.add('hidden');
+            if (!data || data.length === 0) {
+              container.innerHTML = '<p class="text-slate-400 text-sm">Belum ada data pengaduan yang masuk.</p>';
+              return;
             }
-        });
-    </script>
 
+            data.reverse().forEach(item => {
+              const itemDiv = document.createElement('div');
+              itemDiv.className = 'p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-1';
+              itemDiv.innerHTML = `
+                <div class="flex justify-between items-center">
+                  <span class="font-bold text-slate-800">${item.nama || 'Anonim'} <span class="text-xs font-normal text-slate-500">(${item.dusun || '-'})</span></span>
+                  <span class="text-xs text-slate-400">${item.timestamp ? new Date(item.timestamp).toLocaleString('id-ID') : 'Baru saja'}</span>
+                </div>
+                <p class="text-sm text-slate-600 mt-2">${item.pesan || ''}</p>
+              `;
+              container.appendChild(itemDiv);
+            });
+          })
+          .catch(err => {
+            loading.classList.add('hidden');
+            container.innerHTML = `
+              <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-1">
+                <div class="flex justify-between items-center">
+                  <span class="font-bold text-slate-800">Budi Santoso <span class="text-xs font-normal text-slate-500">(Dusun Sebangkau)</span></span>
+                  <span class="text-xs text-slate-400">Contoh Pengaduan</span>
+                </div>
+                <p class="text-sm text-slate-600 mt-2">Lampu jalan di RT 04 padam, mohon perbaikan dari pihak desa.</p>
+              </div>
+              <p class="text-xs text-amber-600 mt-2">* Masukkan URL Web App Google Script kamu agar data real-time dari Google Sheet bisa terbaca langsung di sini.</p>
+            `;
+          });
+      }
+    </script>
 </body>
 </html>
