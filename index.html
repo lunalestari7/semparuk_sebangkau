@@ -3,128 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Desa Semparuk Sebangkau</title>
+    <title>Desa Semparuk Sebangkau</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans min-h-screen flex flex-col justify-between">
+<body class="bg-gray-100 text-gray-800 font-sans min-h-screen flex flex-col justify-between">
 
-    <!-- Navbar / Menu Utama -->
-    <nav class="bg-emerald-700 text-white shadow-md sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center">
-            <!-- Logo / Nama Desa -->
-            <div class="flex items-center space-x-2">
-                <span class="text-xl font-bold tracking-wide">Desa Semparuk Sebangkau</span>
+    <!-- Navbar / Header Hijau -->
+    <header class="bg-[#007a55] text-white shadow-md">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <h1 class="text-2xl font-bold tracking-tight text-center md:text-left leading-tight">
+                Desa Semparuk<br>Sebangkau
+            </h1>
+            <nav class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-base font-medium">
+                <a href="#beranda" class="text-yellow-400 font-semibold hover:underline">Beranda</a>
+                <a href="#profil" class="hover:underline">Profil</a>
+                <a href="#sejarah" class="hover:underline">Sejarah</a>
+                <a href="#potensi" class="hover:underline">Potensi</a>
+                <a href="#galeri" class="hover:underline">Galeri</a>
+                <a href="#kontak" class="hover:underline">Kontak</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Konten Utama -->
+    <main class="max-w-4xl mx-auto px-4 py-8 flex-grow w-full space-y-8">
+        
+        <!-- Section Form Pengaduan Warga -->
+        <div id="pengaduan" class="bg-white p-6 md:p-10 rounded-2xl shadow-sm border border-gray-100">
+            <h2 class="text-2xl md:text-3xl font-bold text-[#005a3e] mb-6">Layanan Pengaduan Warga</h2>
+            
+            <form id="form-aspirasi" class="space-y-5">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Nama Lengkap</label>
+                    <input type="text" name="nama" required class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#007a55]">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Dusun</label>
+                    <input type="text" name="dusun" required class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#007a55]">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Pesan Pengaduan</label>
+                    <textarea name="pesan" rows="5" required class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#007a55]"></textarea>
+                </div>
+
+                <div>
+                    <button type="submit" id="btn-submit" class="bg-[#007a55] hover:bg-[#005a3e] text-white font-semibold px-6 py-3 rounded-xl transition shadow-sm">
+                        Kirim Pengaduan
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Section Cek / Tabel Pengaduan Masuk -->
+        <div class="bg-white p-6 md:p-10 rounded-2xl shadow-sm border border-gray-100">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl md:text-2xl font-bold text-[#005a3e]">Daftar Pengaduan Masuk</h2>
+                <button onclick="loadData()" class="bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-semibold px-4 py-2 rounded-lg border border-gray-200">
+                    🔄 Refresh
+                </button>
             </div>
 
-            <!-- Tombol Navigasi Menu -->
-            <div class="flex items-center space-x-1 md:space-x-4 text-sm font-medium overflow-x-auto py-1">
-                <a href="#beranda" class="hover:bg-emerald-800 px-3 py-2 rounded transition">Beranda</a>
-                <a href="#pengumuman" class="hover:bg-emerald-800 px-3 py-2 rounded transition">Informasi</a>
-                <a href="#galeri" class="hover:bg-emerald-800 px-3 py-2 rounded transition">Galeri</a>
-                <a href="#pengaduan" class="bg-emerald-800 hover:bg-emerald-900 px-3 py-2 rounded transition text-emerald-100 font-bold">Pengaduan</a>
-                <a href="panel-admin.html" class="bg-white text-emerald-800 hover:bg-emerald-100 px-3 py-2 rounded transition font-bold shadow-sm">Admin Login</a>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-emerald-50 text-[#005a3e] border-b border-emerald-100 text-sm">
+                            <th class="p-3">Waktu</th>
+                            <th class="p-3">Nama</th>
+                            <th class="p-3">Dusun</th>
+                            <th class="p-3">Pesan Pengaduan</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabel-pengaduan" class="text-sm divide-y divide-gray-100">
+                        <tr>
+                            <td colspan="4" class="p-4 text-center text-gray-400">Memuat data...</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main class="max-w-5xl mx-auto px-4 py-8 flex-grow w-full space-y-12">
-        
-        <!-- Section 1: Beranda / Banner -->
-        <section id="beranda" class="bg-white p-8 rounded-xl shadow-sm border border-gray-200 text-center">
-            <h1 class="text-3xl font-extrabold text-emerald-800 mb-3">Selamat Datang di Portal Desa</h1>
-            <p class="text-gray-600 max-w-2xl mx-auto">
-                Pusat informasi resmi dan layanan aspirasi warga Desa Semparuk Sebangkau. Melayani dengan transparan, cepat, dan terpercaya.
-            </p>
-        </section>
-
-        <!-- Section 2: Informasi & Berita Desa -->
-        <section id="pengumuman" class="space-y-4">
-            <h2 class="text-2xl font-bold text-gray-800 border-b-2 border-emerald-600 pb-2 inline-block">Informasi & Pengumuman</h2>
-            <div class="grid md:grid-cols-2 gap-6 mt-4">
-                <div class="bg-white p-5 rounded-lg shadow-sm border border-gray-200">
-                    <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded">Pengumuman</span>
-                    <h3 class="text-lg font-bold text-gray-800 mt-2">Kegiatan Gotong Royong Desa</h3>
-                    <p class="text-gray-600 text-sm mt-1">Diimbau kepada seluruh warga untuk berpartisipasi dalam kerja bakti pembersihan lingkungan pada hari Minggu besok.</p>
-                </div>
-                <div class="bg-white p-5 rounded-lg shadow-sm border border-gray-200">
-                    <span class="text-xs bg-blue-100 text-blue-800 font-bold px-2.5 py-1 rounded">Berita</span>
-                    <h3 class="text-lg font-bold text-gray-800 mt-2">Penyaluran Bantuan Desa</h3>
-                    <p class="text-gray-600 text-sm mt-1">Kegiatan penyaluran bantuan sosial berjalan dengan tertib di balai desa setempat.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 3: Galeri Desa -->
-        <section id="galeri" class="space-y-4">
-            <h2 class="text-2xl font-bold text-gray-800 border-b-2 border-emerald-600 pb-2 inline-block">Galeri Kegiatan</h2>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
-                <div class="bg-gray-200 h-36 md:h-48 rounded-lg flex items-center justify-center text-gray-500 font-medium">Foto Kegiatan 1</div>
-                <div class="bg-gray-200 h-36 md:h-48 rounded-lg flex items-center justify-center text-gray-500 font-medium">Foto Kegiatan 2</div>
-                <div class="bg-gray-200 h-36 md:h-48 rounded-lg flex items-center justify-center text-gray-500 font-medium">Foto Kegiatan 3</div>
-            </div>
-        </section>
-
-        <!-- Section 4: Formulir Pengaduan Warga -->
-        <section id="pengaduan" class="bg-white p-6 md:p-8 rounded-xl shadow-md border border-gray-200">
-            <h2 class="text-2xl font-bold text-emerald-800 mb-2 text-center">Formulir Pengaduan Warga</h2>
-            <p class="text-gray-500 text-sm text-center mb-6">Sampaikan laporan, keluhan, atau aspirasi Anda langsung ke pihak desa.</p>
-            
-            <form id="form-aspirasi" class="space-y-4 max-w-2xl mx-auto">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
-                    <input type="text" name="nama" required placeholder="Masukkan nama lengkap Anda" class="w-full p-2.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500">
-                </div>
-
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Dusun</label>
-                    <input type="text" name="dusun" required placeholder="Masukkan nama dusun" class="w-full p-2.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500">
-                </div>
-
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Pesan Pengaduan</label>
-                    <textarea name="pesan" rows="4" required placeholder="Tuliskan pengaduan atau saran Anda" class="w-full p-2.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"></textarea>
-                </div>
-
-                <button type="submit" id="btn-submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2.5 rounded-md font-bold transition duration-200 shadow-sm">
-                    Kirim Pengaduan
-                </button>
-            </form>
-        </section>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white text-center py-4 text-xs md:text-sm mt-8">
-        <p>&copy; Website Resmi Desa Semparuk Sebangkau. All Rights Reserved.</p>
+    <!-- Footer Utama -->
+    <footer class="bg-[#1e293b] text-white text-center py-4 text-sm">
+        <p>&copy; 2026 Desa Semparuk Sebangkau, Kabupaten Sambas. All Rights Reserved.</p>
     </footer>
 
-    <!-- Script Pengirim ke Google Sheets -->
+    <!-- Sub Footer Admin Link -->
+    <div class="bg-gray-200 text-center py-3 text-xs text-gray-600">
+        <p>&copy; 2026 Desa Semparuk Sebangkau</p>
+        <p class="mt-1"><a href="panel-admin.html" class="hover:underline text-gray-500">[ Akses Admin ]</a></p>
+    </div>
+
+    <!-- Script Pengirim & Pembaca Google Sheets -->
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbz_3VjacBRhT5B_COKgr8c6Ucrc2h7gSb0u32ypwoi2qd3tOidEv5UpzIZSJEb38gfMlQ/exec';
         const form = document.forms['form-aspirasi'];
         const btnSubmit = document.getElementById('btn-submit');
 
+        // Kirim Pengaduan
         form.addEventListener('submit', e => {
             e.preventDefault();
-            
             btnSubmit.disabled = true;
             btnSubmit.innerText = 'Mengirim...';
 
             fetch(scriptURL, { method: 'POST', body: new FormData(form) })
                 .then(response => {
-                    alert('Pengaduan Anda berhasil terkirim!');
+                    alert('Pengaduan berhasil terkirim!');
                     btnSubmit.disabled = false;
                     btnSubmit.innerText = 'Kirim Pengaduan';
                     form.reset();
+                    loadData(); // Muat ulang tabel setelah kirim
                 })
                 .catch(error => {
-                    alert('Gagal mengirim pengaduan. Silakan coba lagi.');
+                    alert('Gagal mengirim pengaduan.');
                     btnSubmit.disabled = false;
                     btnSubmit.innerText = 'Kirim Pengaduan';
                 });
         });
+
+        // Cek / Baca Pengaduan dari Google Sheets
+        function loadData() {
+            const tabel = document.getElementById('tabel-pengaduan');
+            fetch(scriptURL)
+                .then(res => res.json())
+                .then(data => {
+                    if (!data || data.length <= 1) {
+                        tabel.innerHTML = '<tr><td colspan="4" class="p-4 text-center text-gray-400">Belum ada pengaduan masuk.</td></tr>';
+                        return;
+                    }
+
+                    let rows = '';
+                    // Mulai dari baris index 1 untuk melompati Judul Kolom (Header)
+                    for (let i = 1; i < data.length; i++) {
+                        const waktu = data[i][0] ? new Date(data[i][0]).toLocaleString('id-ID') : '-';
+                        rows += `
+                            <tr class="hover:bg-gray-50">
+                                <td class="p-3 text-gray-500 text-xs">${waktu}</td>
+                                <td class="p-3 font-semibold text-gray-700">${data[i][1] || '-'}</td>
+                                <td class="p-3 text-gray-600">${data[i][2] || '-'}</td>
+                                <td class="p-3 text-gray-800">${data[i][3] || '-'}</td>
+                            </tr>
+                        `;
+                    }
+                    tabel.innerHTML = rows;
+                })
+                .catch(() => {
+                    tabel.innerHTML = '<tr><td colspan="4" class="p-4 text-center text-gray-500">Cek langsung data di Google Sheets atau Panel Admin.</td></tr>';
+                });
+        }
+
+        // Jalankan saat halaman dibuka
+        loadData();
     </script>
 </body>
 </html>
