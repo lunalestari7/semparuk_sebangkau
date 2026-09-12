@@ -3,40 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Layanan Pengaduan Warga</title>
+    <title>Website Desa Semparuk Sebangkau</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans min-h-screen flex flex-col justify-between">
 
-    <!-- Header / Navbar -->
-    <header class="bg-emerald-700 text-white shadow-md">
-        <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-xl font-bold tracking-wide">Layanan Pengaduan Warga</h1>
-            <a href="panel-admin.html" class="text-sm bg-emerald-800 hover:bg-emerald-900 px-3 py-1.5 rounded transition font-medium">
-                Admin Login
-            </a>
+    <!-- Navbar / Menu Utama -->
+    <nav class="bg-emerald-700 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center">
+            <!-- Logo / Nama Desa -->
+            <div class="flex items-center space-x-2">
+                <span class="text-xl font-bold tracking-wide">Desa Semparuk Sebangkau</span>
+            </div>
+
+            <!-- Tombol Navigasi Menu -->
+            <div class="flex items-center space-x-1 md:space-x-4 text-sm font-medium overflow-x-auto py-1">
+                <a href="#beranda" class="hover:bg-emerald-800 px-3 py-2 rounded transition">Beranda</a>
+                <a href="#pengumuman" class="hover:bg-emerald-800 px-3 py-2 rounded transition">Informasi</a>
+                <a href="#galeri" class="hover:bg-emerald-800 px-3 py-2 rounded transition">Galeri</a>
+                <a href="#pengaduan" class="bg-emerald-800 hover:bg-emerald-900 px-3 py-2 rounded transition text-emerald-100 font-bold">Pengaduan</a>
+                <a href="panel-admin.html" class="bg-white text-emerald-800 hover:bg-emerald-100 px-3 py-2 rounded transition font-bold shadow-sm">Admin Login</a>
+            </div>
         </div>
-    </header>
+    </nav>
 
     <!-- Main Content -->
-    <main class="max-w-4xl mx-auto px-4 py-8 flex-grow w-full">
-        <!-- Hero Section -->
-        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center mb-8">
-            <h2 class="text-2xl font-bold text-emerald-800 mb-2">Selamat Datang di Portal Pengaduan</h2>
-            <p class="text-gray-600 text-sm md:text-base">
-                Sampaikan aspirasi, saran, atau laporan pengaduan Anda untuk kemajuan dan kenyamanan desa kita bersama.
+    <main class="max-w-5xl mx-auto px-4 py-8 flex-grow w-full space-y-12">
+        
+        <!-- Section 1: Beranda / Banner -->
+        <section id="beranda" class="bg-white p-8 rounded-xl shadow-sm border border-gray-200 text-center">
+            <h1 class="text-3xl font-extrabold text-emerald-800 mb-3">Selamat Datang di Portal Desa</h1>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+                Pusat informasi resmi dan layanan aspirasi warga Desa Semparuk Sebangkau. Melayani dengan transparan, cepat, dan terpercaya.
             </p>
-        </div>
+        </section>
 
-        <!-- Form Pengaduan Warga -->
-        <div class="bg-white p-6 md:p-8 rounded-lg shadow-md border border-gray-200">
-            <h3 class="text-xl font-bold text-emerald-800 mb-6 text-center border-b pb-3">Formulir Pengaduan Warga</h3>
+        <!-- Section 2: Informasi & Berita Desa -->
+        <section id="pengumuman" class="space-y-4">
+            <h2 class="text-2xl font-bold text-gray-800 border-b-2 border-emerald-600 pb-2 inline-block">Informasi & Pengumuman</h2>
+            <div class="grid md:grid-cols-2 gap-6 mt-4">
+                <div class="bg-white p-5 rounded-lg shadow-sm border border-gray-200">
+                    <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded">Pengumuman</span>
+                    <h3 class="text-lg font-bold text-gray-800 mt-2">Kegiatan Gotong Royong Desa</h3>
+                    <p class="text-gray-600 text-sm mt-1">Diimbau kepada seluruh warga untuk berpartisipasi dalam kerja bakti pembersihan lingkungan pada hari Minggu besok.</p>
+                </div>
+                <div class="bg-white p-5 rounded-lg shadow-sm border border-gray-200">
+                    <span class="text-xs bg-blue-100 text-blue-800 font-bold px-2.5 py-1 rounded">Berita</span>
+                    <h3 class="text-lg font-bold text-gray-800 mt-2">Penyaluran Bantuan Desa</h3>
+                    <p class="text-gray-600 text-sm mt-1">Kegiatan penyaluran bantuan sosial berjalan dengan tertib di balai desa setempat.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Galeri Desa -->
+        <section id="galeri" class="space-y-4">
+            <h2 class="text-2xl font-bold text-gray-800 border-b-2 border-emerald-600 pb-2 inline-block">Galeri Kegiatan</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+                <div class="bg-gray-200 h-36 md:h-48 rounded-lg flex items-center justify-center text-gray-500 font-medium">Foto Kegiatan 1</div>
+                <div class="bg-gray-200 h-36 md:h-48 rounded-lg flex items-center justify-center text-gray-500 font-medium">Foto Kegiatan 2</div>
+                <div class="bg-gray-200 h-36 md:h-48 rounded-lg flex items-center justify-center text-gray-500 font-medium">Foto Kegiatan 3</div>
+            </div>
+        </section>
+
+        <!-- Section 4: Formulir Pengaduan Warga -->
+        <section id="pengaduan" class="bg-white p-6 md:p-8 rounded-xl shadow-md border border-gray-200">
+            <h2 class="text-2xl font-bold text-emerald-800 mb-2 text-center">Formulir Pengaduan Warga</h2>
+            <p class="text-gray-500 text-sm text-center mb-6">Sampaikan laporan, keluhan, atau aspirasi Anda langsung ke pihak desa.</p>
             
-            <form id="form-aspirasi" class="space-y-4">
+            <form id="form-aspirasi" class="space-y-4 max-w-2xl mx-auto">
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
-                    <input type="text" name="nama" required placeholder="Masukkan nama lengkap" class="w-full p-2.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    <input type="text" name="nama" required placeholder="Masukkan nama lengkap Anda" class="w-full p-2.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500">
                 </div>
 
                 <div>
@@ -46,19 +84,20 @@
 
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Pesan Pengaduan</label>
-                    <textarea name="pesan" rows="4" required placeholder="Tuliskan pengaduan atau aspirasi Anda secara rinci" class="w-full p-2.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"></textarea>
+                    <textarea name="pesan" rows="4" required placeholder="Tuliskan pengaduan atau saran Anda" class="w-full p-2.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"></textarea>
                 </div>
 
-                <button type="submit" id="btn-submit" class="w-full md:w-auto bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2.5 rounded-md font-bold transition duration-200 shadow-sm">
+                <button type="submit" id="btn-submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2.5 rounded-md font-bold transition duration-200 shadow-sm">
                     Kirim Pengaduan
                 </button>
             </form>
-        </div>
+        </section>
+
     </main>
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white text-center py-4 text-xs md:text-sm mt-8">
-        <p>&copy; Layanan Pengaduan Warga. All Rights Reserved.</p>
+        <p>&copy; Website Resmi Desa Semparuk Sebangkau. All Rights Reserved.</p>
     </footer>
 
     <!-- Script Pengirim ke Google Sheets -->
@@ -70,13 +109,12 @@
         form.addEventListener('submit', e => {
             e.preventDefault();
             
-            // Ubah tombol saat proses pengiriman
             btnSubmit.disabled = true;
-            btnSubmit.innerText = 'Sending...';
+            btnSubmit.innerText = 'Mengirim...';
 
             fetch(scriptURL, { method: 'POST', body: new FormData(form) })
                 .then(response => {
-                    alert('Pengaduan berhasil terkirim!');
+                    alert('Pengaduan Anda berhasil terkirim!');
                     btnSubmit.disabled = false;
                     btnSubmit.innerText = 'Kirim Pengaduan';
                     form.reset();
