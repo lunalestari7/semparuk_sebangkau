@@ -1,46 +1,100 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Potensi Desa Semparuk Sebangkau - Kab. Sambas</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Potensi Desa Semparuk Sebangkau</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
-    <nav class="bg-emerald-700 text-white p-4 sticky top-0 z-50 shadow-md">
-        <div class="container mx-auto flex justify-between items-center">
-            <span class="text-xl md:text-2xl font-bold">Desa Semparuk Sebangkau</span>
-            <div class="space-x-4 text-sm md:text-base">
-                <a href="index.html" class="hover:underline">Beranda</a>
-                <a href="profil.html" class="hover:underline">Profil</a>
-                <a href="sejarah.html" class="hover:underline">Sejarah</a>
-                <a href="potensi.html" class="hover:underline font-bold text-yellow-300">Potensi</a>
-                <a href="galeri.html" class="hover:underline">Galeri</a>
-                <a href="kontak.html" class="hover:underline">Kontak</a>
-            </div>
-        </div>
-    </nav>
+<body>
 
-    <main class="container mx-auto p-6 flex-grow">
-        <h2 class="text-3xl font-bold text-emerald-800 mb-6 text-center">Potensi Unggulan Desa Semparuk Sebangkau</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200">
-                <h3 class="text-xl font-bold text-emerald-700 mb-2">1. Pertanian Padi & Perkebunan</h3>
-                <p class="text-gray-600">Sektor pertanian padi menjadi tulang punggung utama ekonomi warga desa, didukung oleh lahan hijau produktif serta sistem irigasi yang tertata baik di kawasan Sambas.</p>
-            </div>
-            <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200">
-                <h3 class="text-xl font-bold text-emerald-700 mb-2">2. Perikanan & Pertambakan</h3>
-                <p class="text-gray-600">Keberadaan wilayah perairan Sebangkau mendukung sektor budidaya ikan dan udang tambak sebagai komoditas andalan unggulan warga Desa Semparuk Sebangkau.</p>
-            </div>
-            <div class="bg-white p-6 rounded-lg shadow-md border border-slate-200">
-                <h3 class="text-xl font-bold text-emerald-700 mb-2">3. UMKM & Kerajinan Lokal</h3>
-                <p class="text-gray-600">Usaha mikro warga berkembang lewat pembuatan produk olahan makanan tradisional khas Sambas, kerajinan tangan, dan perdagangan lokal.</p>
-            </div>
-        </div>
-    </main>
+  <!-- NAVBAR (LOGIN ADMIN ADA DI SETIAP TAMPILAN) -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">Semparuk Sebangkau</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link" href="profil.html">Profil Desa</a></li>
+          <li class="nav-item"><a class="nav-link" href="sejarah.html">Sejarah</a></li>
+          <li class="nav-item"><a class="nav-link active" href="potensi.html">Potensi Desa</a></li>
+          <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
+          <li class="nav-item"><a class="nav-link fw-bold text-warning" href="pengaduan.html">Pengaduan</a></li>
+          <li class="nav-item ms-lg-2">
+            <button class="btn btn-outline-light btn-sm rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#modalLoginAdmin">
+              <i class="bi bi-person-lock me-1"></i> Login Admin
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-    <footer class="bg-slate-800 text-white p-4 text-center text-sm">
-        <p>&copy; 2026 Desa Semparuk Sebangkau, Kabupaten Sambas. All Rights Reserved.</p>
-    </footer>
+  <!-- ISI POTENSI DESA (KONTEN DIPANJANGKAN) -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="fw-bold text-success border-bottom border-success pb-2 mb-4">Potensi Desa Semparuk Sebangkau</h2>
+      
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm p-4">
+            <h5 class="fw-bold text-success mb-3"><i class="bi bi-tree me-2"></i>Pertanian & Perkebunan</h5>
+            <p class="text-muted">
+              Sektor pertanian menjadi tulang punggung perekonomian desa dengan komoditas unggulan seperti padi kualitas lokal, tanaman holtikultura, serta perkebunan kelapa dan sawit yang dikelola oleh kelompok tani desa.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm p-4">
+            <h5 class="fw-bold text-success mb-3"><i class="bi bi-water me-2"></i>Perikanan & Perairan</h5>
+            <p class="text-muted">
+              Memanfaatkan potensi bentang alam dan alur perairan di kawasan Sebangkau, masyarakat mengembangkan potensi budidaya ikan air tawar serta penangkapan ikan secara tradisional yang ramah lingkungan.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm p-4">
+            <h5 class="fw-bold text-success mb-3"><i class="bi bi-shop me-2"></i>UMKM & Kerajinan Lokal</h5>
+            <p class="text-muted">
+              Pertumbuhan UMKM di Desa Semparuk Sebangkau mencakup olahan pakan/makanan khas Sambas, kerajinan tangan, serta usaha perdagangan mikro yang didukung penuh oleh program pemberdayaan ekonomi desa.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL LOGIN ADMIN -->
+  <div class="modal fade" id="modalLoginAdmin" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title fw-bold">Login Admin Desa</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label">Password Admin</label>
+            <input type="password" id="passAdmin" class="form-control" placeholder="Masukkan password admin">
+          </div>
+          <button class="btn btn-success w-100 fw-bold" onclick="loginAdmin()">Masuk Panel Admin</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    <div class="container">
+      <p class="mb-0">&copy; 2026 Pemdes Semparuk Sebangkau. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
