@@ -10,10 +10,10 @@
 </head>
 <body>
 
-  <!-- NAVBAR UNIFORM -->
+  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm sticky-top">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="index.html">Desa Semparuk Sebangkau</a>
+      <a class="navbar-brand fw-bold" href="index.html">Semparuk Sebangkau</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -35,32 +35,82 @@
     </div>
   </nav>
 
-  <!-- HERO SECTION BERANDA -->
-  <section class="hero-section text-center text-white py-5 style-hero">
-    <div class="container py-5">
-      <h1 class="display-4 fw-bold">Selamat Datang di Desa Semparuk Sebangkau</h1>
-      <p class="lead">Kecamatan Semparuk, Kabupaten Sambas, Kalimantan Barat</p>
-      <p class="mt-3">Mewujudkan Desa Mandiri, Sejahtera, dan Berdaya Saing Tinggi dengan Pelayanan Digital Responsif.</p>
-      <a href="pengaduan.html" class="btn btn-warning btn-lg fw-bold text-dark mt-3">
-        <i class="bi bi-pencil-square me-1"></i> Buat Pengaduan / Aspirasi
+  <!-- HERO BANNER -->
+  <header class="bg-success text-white text-center py-5 shadow-sm">
+    <div class="container py-4">
+      <h1 class="display-5 fw-bold mb-3">Selamat Datang di Portal Resmi</h1>
+      <p class="fs-4 mb-4">Desa Semparuk Sebangkau, Kecamatan Semparuk, Kabupaten Sambas</p>
+      <a href="pengaduan.html" class="btn btn-warning btn-lg fw-bold px-4 py-2 shadow-sm rounded-pill">
+        <i class="bi bi-pencil-square me-2"></i>Buat Pengaduan / Aspirasi
       </a>
+    </div>
+  </header>
+
+  <!-- KONTEN BERANDA -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row g-4 mb-5 text-center">
+        <div class="col-md-4">
+          <div class="card border-0 shadow-sm p-4 h-100 bg-light">
+            <i class="bi bi-people-fill text-success display-4 mb-2"></i>
+            <h5 class="fw-bold text-dark">Pelayanan Warga</h5>
+            <p class="text-muted small mb-0">Layanan administrasi dan pengaduan masyarakat yang cepat dan transparan.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card border-0 shadow-sm p-4 h-100 bg-light">
+            <i class="bi bi-tree-fill text-success display-4 mb-2"></i>
+            <h5 class="fw-bold text-dark">Potensi Pertanian</h5>
+            <p class="text-muted small mb-0">Daya dukung lahan subur dan perairan untuk kesejahteraan masyarakat.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card border-0 shadow-sm p-4 h-100 bg-light">
+            <i class="bi bi-shield-check text-success display-4 mb-2"></i>
+            <h5 class="fw-bold text-dark">Informasi Terbuka</h5>
+            <p class="text-muted small mb-0">Akses data profil, sejarah, hingga galeri kegiatan desa secara terbuka.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm p-4 mb-4">
+        <h3 class="fw-bold text-success mb-3"><i class="bi bi-info-circle me-2"></i>Seputar Desa Semparuk Sebangkau</h3>
+        <p class="lead text-secondary">
+          Website ini hadir sebagai sarana publikasi digital resmi Pemerintah Desa Semparuk Sebangkau untuk memberikan kemudahan akses informasi publik serta layanan pengaduan aspirasi bagi warga desa secara online.
+        </p>
+        <p class="mb-0">
+          Silakan jelajahi menu **Profil Desa**, **Sejarah**, **Potensi Desa**, dan **Galeri** melalui bar navigasi di atas, atau klik tombol kuning di atas untuk menyampaikan pengaduan maupun aspirasi Anda secara langsung.
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- MODAL LOGIN ADMIN -->
-  <div class="modal fade" id="modalLoginAdmin" tabindex="-1">
+  <div class="modal fade" id="modalLoginAdmin" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header bg-success text-white">
-          <h5 class="modal-title fw-bold">Login Admin Desa</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          <div class="mb-3">
-            <label class="form-label">Password Admin</label>
-            <input type="password" id="passAdmin" class="form-control" placeholder="Masukkan password admin">
+      <div class="modal-content border-0 rounded-4 shadow-lg p-3 position-relative">
+        <button type="button" class="btn-close bg-light rounded-circle p-2 position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-body text-center pt-4">
+          <div class="d-inline-flex align-items-center justify-content-center bg-success-subtle text-success rounded-4 p-3 mb-3" style="width: 70px; height: 70px;">
+            <i class="bi bi-tree-fill display-5"></i>
           </div>
-          <button class="btn btn-success w-100 fw-bold" onclick="loginAdmin()">Masuk Panel Admin</button>
+          <h4 class="fw-bold text-dark mb-1">Login Admin Desa</h4>
+          <p class="text-muted small mb-4">Desa Semparuk Sebangkau</p>
+          <div class="text-start mb-4">
+            <label class="form-label fw-bold text-secondary small">Kata Sandi</label>
+            <div class="input-group">
+              <input type="password" id="passAdmin" class="form-control rounded-start-3 py-2" placeholder="Masukkan kata sandi">
+              <button class="btn btn-outline-secondary rounded-end-3 px-3" type="button" onclick="togglePassword()">
+                <i class="bi bi-eye-fill" id="iconEye"></i>
+              </button>
+            </div>
+          </div>
+          <button class="btn btn-success w-100 fw-bold py-2 rounded-3 mb-3 d-flex align-items-center justify-content-center gap-2" onclick="loginAdmin()">
+            <i class="bi bi-lock-fill"></i> Masuk Admin
+          </button>
+          <div>
+            <a href="#" class="text-decoration-none text-success small fw-semibold" data-bs-dismiss="modal">&larr; Kembali ke Beranda</a>
+          </div>
         </div>
       </div>
     </div>
@@ -68,7 +118,7 @@
 
   <footer class="bg-dark text-white text-center py-3 mt-5">
     <div class="container">
-      <p class="mb-0">&copy; 2026 Desa Semparuk Sebangkau. All Rights Reserved.</p>
+      <p class="mb-0">&copy; 2026 Pemdes Semparuk Sebangkau. All Rights Reserved.</p>
     </div>
   </footer>
 
