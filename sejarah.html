@@ -10,49 +10,83 @@
 </head>
 <body>
 
-  <!-- PASTE KODE NAVBAR INI DI ATAS SETIAP HALAMAN -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm sticky-top">
-  <div class="container">
-    <a class="navbar-brand fw-bold" href="index.html">Desa Semparuk Sebangkau</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto align-items-center">
-        <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
-        <li class="nav-item"><a class="nav-link" href="profil.html">Profil Desa</a></li>
-        <li class="nav-item"><a class="nav-link" href="sejarah.html">Sejarah</a></li>
-        <li class="nav-item"><a class="nav-link" href="potensi.html">Potensi Desa</a></li>
-        <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
-        <li class="nav-item"><a class="nav-link fw-bold text-warning" href="pengaduan.html">Pengaduan</a></li>
-        <li class="nav-item ms-lg-2">
-          <button class="btn btn-outline-light btn-sm rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#modalLoginAdmin">
-            <i class="bi bi-person-lock me-1"></i> Login Admin
-          </button>
-        </li>
-      </ul>
+  <!-- NAVBAR (LOGIN ADMIN & PENGADUAN ADA DI SETIAP TAMPILAN) -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">Semparuk Sebangkau</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link" href="profil.html">Profil Desa</a></li>
+          <li class="nav-item"><a class="nav-link active" href="sejarah.html">Sejarah</a></li>
+          <li class="nav-item"><a class="nav-link" href="potensi.html">Potensi Desa</a></li>
+          <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
+          <li class="nav-item"><a class="nav-link fw-bold text-warning" href="pengaduan.html">Pengaduan</a></li>
+          <li class="nav-item ms-lg-2">
+            <button class="btn btn-outline-light btn-sm rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#modalLoginAdmin">
+              <i class="bi bi-person-lock me-1"></i> Login Admin
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<!-- PASTE MODAL LOGIN ADMIN INI SEBELUM TAG FOOTER DI SETIAP HALAMAN -->
-<div class="modal fade" id="modalLoginAdmin" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header bg-success text-white">
-        <h5 class="modal-title fw-bold">Login Admin Desa</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+  <!-- ISI SEJARAH DESA (KONTEN DIPANJANGKAN) -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="fw-bold text-success border-bottom border-success pb-2 mb-4">Sejarah Desa Semparuk Sebangkau</h2>
+      <div class="card border-0 shadow-sm p-4 mb-5">
+        <p>
+          Sejarah terbentuknya Desa Semparuk Sebangkau tidak lepas dari perjalanan panjang peradaban masyarakat Melayu dan daya dukung geografis alur Sungai Sebangkau yang sejak zaman dahulu menjadi jalur transportasi utama serta pemukiman awal para pemuka masyarakat.
+        </p>
+        <p>
+          Awal mulanya, wilayah ini dimanfaatkan oleh para perintis desa sebagai kawasan pemukiman berbasis pertanian dan perikanan air tawar. Seiring berjalannya waktu dan dimekarkannya wilayah administratif di Kabupaten Sambas, kawasan ini berkembang menjadi desa yang mandiri.
+        </p>
+        <p>
+          Nama "Sebangkau" sendiri melekat kuat dengan tradisi lokal dan garis keturunan para tokoh terdahulu yang membangun fondasi kedamaian, kerukunan antarumat, serta semangat gotong royong yang terus diwariskan hingga generasi saat ini. Perjuangan para tetua desa dalam membuka akses wilayah, mengolah lahan pertanian, dan menjaga tatanan adat menjadi warisan berharga yang terus dijaga oleh pemerintah desa dan masyarakat hingga kini.
+        </p>
       </div>
-      <div class="modal-body">
-        <div class="mb-3">
-          <label class="form-label">Password Admin</label>
-          <input type="password" id="passAdmin" class="form-control" placeholder="Masukkan password admin">
+
+      <!-- KOTAK CEK STATUS ADUAN MENGGUNAKAN TOKEN ID -->
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card border-0 shadow-sm p-4 bg-light rounded-3">
+            <h4 class="fw-bold mb-3 text-success"><i class="bi bi-search me-2"></i>Cek Tanggapan Aduan (ID Token)</h4>
+            <p class="text-muted small">Masukkan ID Token yang Anda dapatkan saat mengirim aduan untuk mengecek balasan dari admin desa.</p>
+            <div class="input-group mb-3">
+              <input type="text" id="inputTokenCek" class="form-control" placeholder="Masukkan ID Token (Contoh: ADU-8X29K)">
+              <button class="btn btn-success fw-bold px-4" onclick="cekStatusAduan()">Cek Token</button>
+            </div>
+            <div id="hasilCekAduan"></div>
+          </div>
         </div>
-        <button class="btn btn-success w-100 fw-bold" onclick="loginAdmin()">Masuk Panel Admin</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MODAL LOGIN ADMIN -->
+  <div class="modal fade" id="modalLoginAdmin" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title fw-bold">Login Admin Desa</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label">Password Admin</label>
+            <input type="password" id="passAdmin" class="form-control" placeholder="Masukkan password admin">
+          </div>
+          <button class="btn btn-success w-100 fw-bold" onclick="loginAdmin()">Masuk Panel Admin</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
   <footer class="bg-dark text-white text-center py-3 mt-5">
     <div class="container">
