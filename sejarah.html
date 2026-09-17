@@ -10,7 +10,6 @@
 </head>
 <body>
 
-  <!-- NAVBAR (LOGIN ADMIN & PENGADUAN ADA DI SETIAP TAMPILAN) -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm sticky-top">
     <div class="container">
       <a class="navbar-brand fw-bold" href="index.html">Semparuk Sebangkau</a>
@@ -35,11 +34,10 @@
     </div>
   </nav>
 
-  <!-- ISI SEJARAH DESA (KONTEN DIPANJANGKAN) -->
   <section class="py-5">
     <div class="container">
       <h2 class="fw-bold text-success border-bottom border-success pb-2 mb-4">Sejarah Desa Semparuk Sebangkau</h2>
-      <div class="card border-0 shadow-sm p-4 mb-5">
+      <div class="card border-0 shadow-sm p-4">
         <p>
           Sejarah terbentuknya Desa Semparuk Sebangkau tidak lepas dari perjalanan panjang peradaban masyarakat Melayu dan daya dukung geografis alur Sungai Sebangkau yang sejak zaman dahulu menjadi jalur transportasi utama serta pemukiman awal para pemuka masyarakat.
         </p>
@@ -50,39 +48,35 @@
           Nama "Sebangkau" sendiri melekat kuat dengan tradisi lokal dan garis keturunan para tokoh terdahulu yang membangun fondasi kedamaian, kerukunan antarumat, serta semangat gotong royong yang terus diwariskan hingga generasi saat ini. Perjuangan para tetua desa dalam membuka akses wilayah, mengolah lahan pertanian, dan menjaga tatanan adat menjadi warisan berharga yang terus dijaga oleh pemerintah desa dan masyarakat hingga kini.
         </p>
       </div>
-
-      <!-- KOTAK CEK STATUS ADUAN MENGGUNAKAN TOKEN ID -->
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div class="card border-0 shadow-sm p-4 bg-light rounded-3">
-            <h4 class="fw-bold mb-3 text-success"><i class="bi bi-search me-2"></i>Cek Tanggapan Aduan (ID Token)</h4>
-            <p class="text-muted small">Masukkan ID Token yang Anda dapatkan saat mengirim aduan untuk mengecek balasan dari admin desa.</p>
-            <div class="input-group mb-3">
-              <input type="text" id="inputTokenCek" class="form-control" placeholder="Masukkan ID Token (Contoh: ADU-8X29K)">
-              <button class="btn btn-success fw-bold px-4" onclick="cekStatusAduan()">Cek Token</button>
-            </div>
-            <div id="hasilCekAduan"></div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </section>
 
   <!-- MODAL LOGIN ADMIN -->
-  <div class="modal fade" id="modalLoginAdmin" tabindex="-1">
+  <div class="modal fade" id="modalLoginAdmin" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header bg-success text-white">
-          <h5 class="modal-title fw-bold">Login Admin Desa</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          <div class="mb-3">
-            <label class="form-label">Password Admin</label>
-            <input type="password" id="passAdmin" class="form-control" placeholder="Masukkan password admin">
+      <div class="modal-content border-0 rounded-4 shadow-lg p-3 position-relative">
+        <button type="button" class="btn-close bg-light rounded-circle p-2 position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-body text-center pt-4">
+          <div class="d-inline-flex align-items-center justify-content-center bg-success-subtle text-success rounded-4 p-3 mb-3" style="width: 70px; height: 70px;">
+            <i class="bi bi-tree-fill display-5"></i>
           </div>
-          <button class="btn btn-success w-100 fw-bold" onclick="loginAdmin()">Masuk Panel Admin</button>
+          <h4 class="fw-bold text-dark mb-1">Login Admin Desa</h4>
+          <p class="text-muted small mb-4">Desa Semparuk Sebangkau</p>
+          <div class="text-start mb-4">
+            <label class="form-label fw-bold text-secondary small">Kata Sandi</label>
+            <div class="input-group">
+              <input type="password" id="passAdmin" class="form-control rounded-start-3 py-2" placeholder="Masukkan kata sandi">
+              <button class="btn btn-outline-secondary rounded-end-3 px-3" type="button" onclick="togglePassword()">
+                <i class="bi bi-eye-fill" id="iconEye"></i>
+              </button>
+            </div>
+          </div>
+          <button class="btn btn-success w-100 fw-bold py-2 rounded-3 mb-3 d-flex align-items-center justify-content-center gap-2" onclick="loginAdmin()">
+            <i class="bi bi-lock-fill"></i> Masuk Admin
+          </button>
+          <div>
+            <a href="#" class="text-decoration-none text-success small fw-semibold" data-bs-dismiss="modal">&larr; Kembali ke Beranda</a>
+          </div>
         </div>
       </div>
     </div>
