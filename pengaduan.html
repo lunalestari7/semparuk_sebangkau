@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pengaduan Masyarakat - Semparuk Sebangkau</title>
+  <title>Pengaduan Warga - Desa Semparuk Sebangkau</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="bg-light">
 
-  <!-- NAVBAR -->
+  <!-- NAVBAR UNIFORM -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm sticky-top">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="index.html">Semparuk Sebangkau</a>
+      <a class="navbar-brand fw-bold" href="index.html">Desa Semparuk Sebangkau</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -35,58 +35,54 @@
     </div>
   </nav>
 
-  <!-- FORM PENGADUAN & CEK TOKEN -->
-  <section class="py-5">
-    <div class="container">
-      <h2 class="fw-bold text-success text-center mb-4">Layanan Pengaduan Masyarakat</h2>
-      <div class="row g-4">
-        
-        <!-- 1. Form Kirim Pengaduan Baru -->
-        <div class="col-md-7">
-          <div class="card border-0 shadow-sm p-4">
-            <h4 class="fw-bold mb-3 text-success">Kirim Aduan Baru</h4>
-            <form id="formAduan" onsubmit="submitAduan(event)">
-              <div class="mb-3">
-                <label class="form-label">Nama Lengkap</label>
-                <input type="text" id="namaPelapor" class="form-control" required placeholder="Masukkan nama Anda">
-              </div>
-              <div class="mb-3">
-                <label class="form-label">Dusun / No HP</label>
-                <input type="text" id="kontakPelapor" class="form-control" required placeholder="Dusun / No WhatsApp">
-              </div>
-              <div class="mb-3">
-                <label class="form-label">Isi Pengaduan</label>
-                <textarea id="isiAduan" class="form-control" rows="4" required placeholder="Tuliskan isi aduan Anda..."></textarea>
-              </div>
-              <button type="submit" class="btn btn-success w-100 fw-bold">Kirim Pengaduan</button>
-            </form>
-            
-            <!-- Box Pemberitahuan ID Token Unik -->
-            <div id="alertToken" class="alert alert-success mt-3 d-none">
-              <strong>Aduan Berhasil Dikirim!</strong><br>
-              Simpan ID Token Anda di bawah ini untuk mengecek apakah admin sudah membalas:<br>
-              <span id="displayToken" class="badge bg-dark fs-6 mt-2 p-2"></span>
+  <!-- KONTEN PENGADUAN WARGA -->
+  <div class="container py-5">
+    <div class="row g-4 justify-content-center">
+      
+      <!-- Form Tampilan Sesuai Foto Anda -->
+      <div class="col-md-7">
+        <div class="card border-0 shadow-sm p-4 rounded-3">
+          <h3 class="fw-bold mb-4 text-secondary">Layanan Pengaduan Warga</h3>
+          <form id="formAduan" onsubmit="submitAduan(event)">
+            <div class="mb-3">
+              <label class="form-label text-muted">Nama Lengkap</label>
+              <input type="text" id="namaPelapor" class="form-control form-control-lg bg-light border-0" required>
             </div>
+            <div class="mb-3">
+              <label class="form-label text-muted">Dusun</label>
+              <input type="text" id="kontakPelapor" class="form-control form-control-lg bg-light border-0" required>
+            </div>
+            <div class="mb-4">
+              <label class="form-label text-muted">Pesan Pengaduan</label>
+              <textarea id="isiAduan" class="form-control form-control-lg bg-light border-0" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-teal text-white px-4 py-2 fw-bold" style="background-color: #20c997; border: none;">Kirim Pengaduan</button>
+          </form>
+          
+          <!-- Alert Token ID -->
+          <div id="alertToken" class="alert alert-success mt-4 d-none" role="alert">
+            <strong>Aduan Berhasil Dikirim!</strong><br>
+            Simpan ID Token Anda untuk cek status balasan admin:<br>
+            <span id="displayToken" class="badge bg-dark fs-6 mt-2 p-2"></span>
           </div>
         </div>
-
-        <!-- 2. Form Cek Status Balasan Admin Pakai Token -->
-        <div class="col-md-5">
-          <div class="card border-0 shadow-sm p-4 bg-light">
-            <h4 class="fw-bold mb-3 text-success">Cek Status Aduan</h4>
-            <p class="small text-muted">Masukkan ID Token yang Anda dapatkan setelah mengisi aduan di samping.</p>
-            <div class="input-group mb-3">
-              <input type="text" id="inputTokenCek" class="form-control" placeholder="Contoh: ADU-8X29K">
-              <button class="btn btn-success fw-bold" onclick="cekStatusAduan()">Cek Status</button>
-            </div>
-            <!-- Tempat Munculnya Balasan Admin -->
-            <div id="hasilCekAduan"></div>
-          </div>
-        </div>
-
       </div>
+
+      <!-- Kotak Cek Token ID -->
+      <div class="col-md-5">
+        <div class="card border-0 shadow-sm p-4 rounded-3">
+          <h4 class="fw-bold mb-3 text-secondary">Cek Tanggapan Admin</h4>
+          <p class="text-muted small">Masukkan ID Token yang Anda dapatkan setelah mengirim pengaduan.</p>
+          <div class="input-group mb-3">
+            <input type="text" id="inputTokenCek" class="form-control" placeholder="Contoh: ADU-8X29K">
+            <button class="btn btn-teal text-white fw-bold" style="background-color: #20c997;" onclick="cekStatusAduan()">Cek Token</button>
+          </div>
+          <div id="hasilCekAduan"></div>
+        </div>
+      </div>
+
     </div>
-  </section>
+  </div>
 
   <!-- MODAL LOGIN ADMIN -->
   <div class="modal fade" id="modalLoginAdmin" tabindex="-1">
@@ -109,7 +105,7 @@
 
   <footer class="bg-dark text-white text-center py-3 mt-5">
     <div class="container">
-      <p class="mb-0">&copy; 2026 Pemdes Semparuk Sebangkau. All Rights Reserved.</p>
+      <p class="mb-0">&copy; 2026 Desa Semparuk Sebangkau. All Rights Reserved.</p>
     </div>
   </footer>
 
