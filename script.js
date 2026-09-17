@@ -63,7 +63,6 @@ function loginAdmin() {
   const pass = document.getElementById('passAdmin').value;
   
   if (pass === "sangadmin") { 
-    alert("Login Admin Berhasil!");
     window.location.href = "admin.html";
   } else {
     alert("Password Admin Salah! Masukkan password yang benar.");
@@ -72,7 +71,6 @@ function loginAdmin() {
 
 // 4. Logout Admin
 function logoutAdmin() {
-  alert("Admin berhasil keluar.");
   window.location.href = "index.html";
 }
 
