@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengaduan Masyarakat Semparuk Sebangkau</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">Semparuk Sebangkau</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link" href="profil.html">Profil Desa</a></li>
+          <li class="nav-item"><a class="nav-link" href="sejarah.html">Sejarah</a></li>
+          <li class="nav-item"><a class="nav-link" href="potensi.html">Potensi Desa</a></li>
+          <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
+          <li class="nav-item"><a class="nav-link active fw-bold text-warning" href="pengaduan.html">Pengaduan</a></li>
+          <li class="nav-item ms-lg-2">
+            <button class="btn btn-outline-light btn-sm rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#modalLoginAdmin">
+              <i class="bi bi-person-lock me-1"></i> Login Admin
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- FORM PENGADUAN & CEK TOKEN -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="fw-bold text-success text-center mb-4">Layanan Pengaduan Masyarakat</h2>
+      <div class="row g-4">
+        
+        <!-- Form Kirim Aduan Baru -->
+        <div class="col-md-7">
+          <div class="card border-0 shadow-sm p-4">
+            <h4 class="fw-bold mb-3 text-success">Kirim Aduan Baru</h4>
+            <form id="formAduan" onsubmit="submitAduan(event)">
+              <div class="mb-3">
+                <label class="form-label">Nama Lengkap</label>
+                <input type="text" id="namaPelapor" class="form-control" required placeholder="Masukkan nama Anda">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Dusun / No HP</label>
+                <input type="text" id="kontakPelapor" class="form-control" required placeholder="Dusun / No WhatsApp">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Isi Pengaduan</label>
+                <textarea id="isiAduan" class="form-control" rows="4" required placeholder="Tuliskan isi aduan Anda..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-success w-100 fw-bold">Kirim Pengaduan</button>
+            </form>
+            
+            <div id="alertToken" class="alert alert-success mt-3 d-none">
+              <strong>Berhasil dikirim!</strong> Simpan ID Token Anda di bawah ini untuk mengecek balasan admin:<br>
+              <span id="displayToken" class="badge bg-dark fs-6 mt-2 p-2"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Cek Balasan Pakai Token -->
+        <div class="col-md-5">
+          <div class="card border-0 shadow-sm p-4 bg-light">
+            <h4 class="fw-bold mb-3 text-success">Cek Status Aduan</h4>
+            <p class="small text-muted">Masukkan ID Token yang Anda dapatkan untuk mengecek balasan admin.</p>
+            <div class="input-group mb-3">
+              <input type="text" id="inputTokenCek" class="form-control" placeholder="Contoh: ADU-8X29K">
+              <button class="btn btn-success fw-bold" onclick="cekStatusAduan()">Cek Status</button>
+            </div>
+            <div id="hasilCekAduan"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL LOGIN ADMIN -->
+  <div class="modal fade" id="modalLoginAdmin" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title fw-bold">Login Admin Desa</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label">Password Admin</label>
+            <input type="password" id="passAdmin" class="form-control" placeholder="Masukkan password admin">
+          </div>
+          <button class="btn btn-success w-100 fw-bold" onclick="loginAdmin()">Masuk Panel Admin</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    <div class="container">
+      <p class="mb-0">&copy; 2026 Pemdes Semparuk Sebangkau. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
