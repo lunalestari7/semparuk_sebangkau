@@ -122,3 +122,17 @@ function simpanBalasanAdmin(index) {
   alert("Balasan berhasil disimpan!");
   renderTabelAdmin();
 }
+function togglePassword() {
+  const inputPass = document.getElementById('passAdmin');
+  const iconEye = document.getElementById('iconEye');
+  
+  if (inputPass.type === 'password') {
+    inputPass.type = 'text';
+    iconEye.classList.remove('bi-eye-fill');
+    iconEye.classList.add('bi-eye-slash-fill');
+  } else {
+    inputPass.type = 'password';
+    iconEye.classList.remove('bi-eye-slash-fill');
+    iconEye.classList.add('bi-eye-fill');
+  }
+}
