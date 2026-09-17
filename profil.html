@@ -10,67 +10,49 @@
 </head>
 <body>
 
-  <!-- NAVBAR (LOGIN ADMIN ADA DI SETIAP TAMPILAN) -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm sticky-top">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="index.html">Semparuk Sebangkau</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto align-items-center">
-          <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
-          <li class="nav-item"><a class="nav-link active" href="profil.html">Profil Desa</a></li>
-          <li class="nav-item"><a class="nav-link" href="sejarah.html">Sejarah</a></li>
-          <li class="nav-item"><a class="nav-link" href="potensi.html">Potensi Desa</a></li>
-          <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
-          <li class="nav-item"><a class="nav-link fw-bold text-warning" href="pengaduan.html">Pengaduan</a></li>
-          <li class="nav-item ms-lg-2">
-            <button class="btn btn-outline-light btn-sm rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#modalLoginAdmin">
-              <i class="bi bi-person-lock me-1"></i> Login Admin
-            </button>
-          </li>
-        </ul>
-      </div>
+  <!-- PASTE KODE NAVBAR INI DI ATAS SETIAP HALAMAN -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="index.html">Desa Semparuk Sebangkau</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+        <li class="nav-item"><a class="nav-link" href="profil.html">Profil Desa</a></li>
+        <li class="nav-item"><a class="nav-link" href="sejarah.html">Sejarah</a></li>
+        <li class="nav-item"><a class="nav-link" href="potensi.html">Potensi Desa</a></li>
+        <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
+        <li class="nav-item"><a class="nav-link fw-bold text-warning" href="pengaduan.html">Pengaduan</a></li>
+        <li class="nav-item ms-lg-2">
+          <button class="btn btn-outline-light btn-sm rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#modalLoginAdmin">
+            <i class="bi bi-person-lock me-1"></i> Login Admin
+          </button>
+        </li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <!-- ISI PROFIL DESA (KONTEN DIPANJANGKAN) -->
-  <section class="py-5">
-    <div class="container">
-      <h2 class="fw-bold text-success border-bottom border-success pb-2 mb-4">Profil Desa Semparuk Sebangkau</h2>
-      <div class="card border-0 shadow-sm p-4">
-        <p class="lead">
-          Desa Semparuk Sebangkau merupakan salah satu desa yang terletak di Kecamatan Semparuk, Kabupaten Sambas, Provinsi Kalimantan Barat. Desa ini memegang peranan penting sebagai kawasan pemukiman, pertanian, dan pusat aktivitas ekonomi lokal yang berlandaskan asas gotong royong dan kearifan lokal.
-        </p>
-        <p>
-          Secara administratif, Desa Semparuk Sebangkau ditunjang oleh tata kelola pemerintahan desa yang responsif, transparan, dan terbuka terhadap perkembangan teknologi informasi. Pemdes berkomitmen tinggi dalam memberikan pelayanan publik prima, mulai dari kelengkapan administrasi kependudukan hingga penampungan aspirasi masyarakat secara digital demi terwujudnya tata kelola desa yang akuntabel dan berdaya saing.
-        </p>
-        <p>
-          Dengan batas wilayah yang strategis serta keberagaman latar belakang masyarakatnya, Desa Semparuk Sebangkau terus bersinergi antara lembaga desa, tokoh masyarakat, dan generasi muda untuk mendorong pembangunan infrastruktur yang merata serta peningkatkan kualitas hidup warga desa secara berkelanjutan.
-        </p>
+<!-- PASTE MODAL LOGIN ADMIN INI SEBELUM TAG FOOTER DI SETIAP HALAMAN -->
+<div class="modal fade" id="modalLoginAdmin" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title fw-bold">Login Admin Desa</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
       </div>
-    </div>
-  </section>
-
-  <!-- MODAL LOGIN ADMIN -->
-  <div class="modal fade" id="modalLoginAdmin" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header bg-success text-white">
-          <h5 class="modal-title fw-bold">Login Admin Desa</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="form-label">Password Admin</label>
+          <input type="password" id="passAdmin" class="form-control" placeholder="Masukkan password admin">
         </div>
-        <div class="modal-body">
-          <div class="mb-3">
-            <label class="form-label">Password Admin</label>
-            <input type="password" id="passAdmin" class="form-control" placeholder="Masukkan password admin">
-          </div>
-          <button class="btn btn-success w-100 fw-bold" onclick="loginAdmin()">Masuk Panel Admin</button>
-        </div>
+        <button class="btn btn-success w-100 fw-bold" onclick="loginAdmin()">Masuk Panel Admin</button>
       </div>
     </div>
   </div>
+</div>
 
   <footer class="bg-dark text-white text-center py-3 mt-5">
     <div class="container">
