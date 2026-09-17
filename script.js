@@ -1,14 +1,14 @@
-// Simpan data pengaduan di sistem
+// Database Pengaduan Lokal
 let dataAduan = JSON.parse(localStorage.getItem('db_aduan_semparuk')) || [];
 
-// 1. Fungsi saat warga menekan tombol 'Kirim Pengaduan' -> Buat ID Token Otomatis
+// 1. Submit Pengaduan & Buat ID Token
 function submitAduan(e) {
   e.preventDefault();
   const nama = document.getElementById('namaPelapor').value;
-  const kontak = document.getElementById('kontakPelapor').value;
+  const kontak = document.getElementById('kontakPelapor').value; // Dusun
   const isi = document.getElementById('isiAduan').value;
   
-  // Membuat Nomor Token ID acak (Contoh: ADU-7K9P2)
+  // Buat Token ID Unik (contoh: ADU-9X2L1)
   const token = 'ADU-' + Math.random().toString(36).substring(2, 7).toUpperCase();
   
   const aduanBaru = {
@@ -18,34 +18,31 @@ function submitAduan(e) {
     kontak: kontak,
     isi: isi,
     status: 'Belum Ditanggapi',
-    tanggapan: 'Belum ada tanggapan atau balasan dari admin.'
+    tanggapan: 'Belum ada tanggapan dari admin.'
   };
 
   dataAduan.push(aduanBaru);
   localStorage.setItem('db_aduan_semparuk', JSON.stringify(dataAduan));
 
-  // Tampilkan Token ke layar masyarakat
   document.getElementById('displayToken').innerText = token;
   document.getElementById('alertToken').classList.remove('d-none');
   document.getElementById('formAduan').reset();
 }
 
-// 2. Fungsi saat warga menekan 'Cek Status' -> Memeriksa ID Token
+// 2. Cek Status Balasan Menggunakan Token
 function cekStatusAduan() {
   const tokenInput = document.getElementById('inputTokenCek').value.trim().toUpperCase();
   const hasilDiv = document.getElementById('hasilCekAduan');
   
-  // Cari aduan berdasarkan ID Token
   const aduan = dataAduan.find(item => item.idToken === tokenInput);
 
   if (!aduan) {
-    hasilDiv.innerHTML = `<div class="alert alert-danger mt-2">ID Token tidak ditemukan! Silakan periksa kembali nomor token Anda.</div>`;
+    hasilDiv.innerHTML = `<div class="alert alert-danger mt-2">ID Token tidak ditemukan! Silakan periksa kembali.</div>`;
     return;
   }
 
   const badgeColor = aduan.status === 'Selesai' ? 'bg-success' : 'bg-warning text-dark';
   
-  // Tampilkan isi pengaduan dan balasan admin
   hasilDiv.innerHTML = `
     <div class="card border border-success mt-2">
       <div class="card-body">
@@ -53,32 +50,33 @@ function cekStatusAduan() {
           <span class="badge ${badgeColor}">${aduan.status}</span>
           <small class="text-muted">${aduan.tanggal}</small>
         </div>
-        <p class="mb-2"><strong>Pengaduan Anda:</strong><br>${aduan.isi}</p>
+        <p class="mb-2"><strong>Aduan Anda:</strong><br>${aduan.isi}</p>
         <hr>
-        <p class="mb-0 text-success"><strong>Tanggapan/Balasan Admin:</strong><br>${aduan.tanggapan}</p>
+        <p class="mb-0 text-success"><strong>Tanggapan Admin:</strong><br>${aduan.tanggapan}</p>
       </div>
     </div>
   `;
 }
 
-// 3. Fungsi Login Admin
+// 3. Login Admin (Password: sangadmin)
 function loginAdmin() {
   const pass = document.getElementById('passAdmin').value;
-  if (pass === "admin123") { 
+  
+  if (pass === "sangadmin") { 
     alert("Login Admin Berhasil!");
     window.location.href = "admin.html";
   } else {
-    alert("Password Admin Salah! (Password default: admin123)");
+    alert("Password Admin Salah! Masukkan password yang benar.");
   }
 }
 
-// 4. Fungsi Logout Admin
+// 4. Logout Admin
 function logoutAdmin() {
   alert("Admin berhasil keluar.");
   window.location.href = "index.html";
 }
 
-// 5. Menampilkan daftar aduan di halaman admin.html
+// 5. Tampilkan Tabel Pengaduan di admin.html
 function renderTabelAdmin() {
   const tbody = document.getElementById('tabelAduanAdmin');
   if (!tbody) return;
@@ -97,7 +95,7 @@ function renderTabelAdmin() {
         <td>${aduan.isi}</td>
         <td><span class="badge ${aduan.status === 'Selesai' ? 'bg-success' : 'bg-warning text-dark'}">${aduan.status}</span></td>
         <td>
-          <textarea id="balasan-${index}" class="form-control form-control-sm" rows="2" placeholder="Ketik balasan admin di sini...">${aduan.tanggapan !== 'Belum ada tanggapan atau balasan dari admin.' ? aduan.tanggapan : ''}</textarea>
+          <textarea id="balasan-${index}" class="form-control form-control-sm" rows="2" placeholder="Ketik balasan admin di sini...">${aduan.tanggapan !== 'Belum ada tanggapan dari admin.' ? aduan.tanggapan : ''}</textarea>
         </td>
         <td>
           <button class="btn btn-sm btn-success fw-bold" onclick="simpanBalasanAdmin(${index})">
@@ -109,7 +107,7 @@ function renderTabelAdmin() {
   });
 }
 
-// 6. Menyimpan Balasan Admin
+// 6. Simpan Balasan Admin
 function simpanBalasanAdmin(index) {
   const teksBalasan = document.getElementById(`balasan-${index}`).value;
   if (teksBalasan.trim() === '') {
@@ -121,6 +119,6 @@ function simpanBalasanAdmin(index) {
   dataAduan[index].status = 'Selesai';
   localStorage.setItem('db_aduan_semparuk', JSON.stringify(dataAduan));
   
-  alert("Tanggapan berhasil disimpan dan dapat dilihat oleh masyarakat menggunakan ID Token!");
+  alert("Balasan berhasil disimpan!");
   renderTabelAdmin();
 }
