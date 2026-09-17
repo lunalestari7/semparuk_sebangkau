@@ -10,7 +10,6 @@
 </head>
 <body class="bg-light flex-column min-vh-100 d-flex">
 
-  <!-- NAVBAR (LOGIN ADMIN & PENGADUAN ADA DI SETIAP TAMPILAN) -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm sticky-top">
     <div class="container">
       <a class="navbar-brand fw-bold" href="index.html">Semparuk Sebangkau</a>
@@ -35,13 +34,12 @@
     </div>
   </nav>
 
-  <!-- ISI GALERI DESA -->
   <main class="container py-5 flex-grow-1">
     <h2 class="text-center fw-bold text-success border-bottom border-success pb-2 mb-4">Sudut Lingkungan Semparuk Sebangkau</h2>
     
-    <div class="row g-4 mb-5">
+    <div class="row g-4">
       <div class="col-md-4">
-        <div class="card border-0 shadow-sm overflow-hidden h-100 cursor-pointer" onclick="openModal('jalan.jpg')" style="cursor: pointer;">
+        <div class="card border-0 shadow-sm overflow-hidden h-100" onclick="openModal('jalan.jpg')" style="cursor: pointer;">
           <img src="jalan.jpg" alt="Jalan Desa Semparuk Sebangkau" class="card-img-top" style="height: 200px; object-fit: cover;">
           <div class="card-body">
             <p class="card-text fw-bold text-dark mb-0">Infrastruktur Jalan Desa</p>
@@ -50,7 +48,7 @@
       </div>
 
       <div class="col-md-4">
-        <div class="card border-0 shadow-sm overflow-hidden h-100 cursor-pointer" onclick="openModal('sungai.jpg')" style="cursor: pointer;">
+        <div class="card border-0 shadow-sm overflow-hidden h-100" onclick="openModal('sungai.jpg')" style="cursor: pointer;">
           <img src="sungai.jpg" alt="Sungai Sebangkau" class="card-img-top" style="height: 200px; object-fit: cover;">
           <div class="card-body">
             <p class="card-text fw-bold text-dark mb-0">Kawasan Perairan Sungai</p>
@@ -59,7 +57,7 @@
       </div>
 
       <div class="col-md-4">
-        <div class="card border-0 shadow-sm overflow-hidden h-100 cursor-pointer" onclick="openModal('sunset.jpg')" style="cursor: pointer;">
+        <div class="card border-0 shadow-sm overflow-hidden h-100" onclick="openModal('sunset.jpg')" style="cursor: pointer;">
           <img src="sunset.jpg" alt="Pemandangan Sunset Desa" class="card-img-top" style="height: 200px; object-fit: cover;">
           <div class="card-body">
             <p class="card-text fw-bold text-dark mb-0">Pemandangan Matahari Terbenam</p>
@@ -67,55 +65,50 @@
         </div>
       </div>
     </div>
-
-    <!-- KOTAK CEK STATUS ADUAN MENGGUNAKAN TOKEN ID -->
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <div class="card border-0 shadow-sm p-4 bg-white rounded-3">
-          <h4 class="fw-bold mb-3 text-success"><i class="bi bi-search me-2"></i>Cek Tanggapan Aduan (ID Token)</h4>
-          <p class="text-muted small">Masukkan ID Token yang Anda dapatkan saat mengirim aduan untuk mengecek balasan dari admin desa.</p>
-          <div class="input-group mb-3">
-            <input type="text" id="inputTokenCek" class="form-control" placeholder="Masukkan ID Token (Contoh: ADU-8X29K)">
-            <button class="btn btn-success fw-bold px-4" onclick="cekStatusAduan()">Cek Token</button>
-          </div>
-          <div id="hasilCekAduan"></div>
-        </div>
-      </div>
-    </div>
   </main>
 
-  <!-- MODAL POPUP PRATINJAU GAMBAR GALERI -->
   <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content bg-transparent border-0">
         <div class="modal-body p-0 text-center position-relative">
           <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3 z-3" data-bs-dismiss="modal" aria-label="Close"></button>
-          <img id="modalImg" src="" class="img-fluid rounded shadow-lg max-vh-85">
+          <img id="modalImg" src="" class="img-fluid rounded shadow-lg">
         </div>
       </div>
     </div>
   </div>
 
   <!-- MODAL LOGIN ADMIN -->
-  <div class="modal fade" id="modalLoginAdmin" tabindex="-1">
+  <div class="modal fade" id="modalLoginAdmin" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header bg-success text-white">
-          <h5 class="modal-title fw-bold">Login Admin Desa</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          <div class="mb-3">
-            <label class="form-label">Password Admin</label>
-            <input type="password" id="passAdmin" class="form-control" placeholder="Masukkan password admin">
+      <div class="modal-content border-0 rounded-4 shadow-lg p-3 position-relative">
+        <button type="button" class="btn-close bg-light rounded-circle p-2 position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-body text-center pt-4">
+          <div class="d-inline-flex align-items-center justify-content-center bg-success-subtle text-success rounded-4 p-3 mb-3" style="width: 70px; height: 70px;">
+            <i class="bi bi-tree-fill display-5"></i>
           </div>
-          <button class="btn btn-success w-100 fw-bold" onclick="loginAdmin()">Masuk Panel Admin</button>
+          <h4 class="fw-bold text-dark mb-1">Login Admin Desa</h4>
+          <p class="text-muted small mb-4">Desa Semparuk Sebangkau</p>
+          <div class="text-start mb-4">
+            <label class="form-label fw-bold text-secondary small">Kata Sandi</label>
+            <div class="input-group">
+              <input type="password" id="passAdmin" class="form-control rounded-start-3 py-2" placeholder="Masukkan kata sandi">
+              <button class="btn btn-outline-secondary rounded-end-3 px-3" type="button" onclick="togglePassword()">
+                <i class="bi bi-eye-fill" id="iconEye"></i>
+              </button>
+            </div>
+          </div>
+          <button class="btn btn-success w-100 fw-bold py-2 rounded-3 mb-3 d-flex align-items-center justify-content-center gap-2" onclick="loginAdmin()">
+            <i class="bi bi-lock-fill"></i> Masuk Admin
+          </button>
+          <div>
+            <a href="#" class="text-decoration-none text-success small fw-semibold" data-bs-dismiss="modal">&larr; Kembali ke Beranda</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- FOOTER -->
   <footer class="bg-dark text-white text-center py-3 mt-auto">
     <div class="container">
       <p class="mb-0">&copy; 2026 Desa Semparuk Sebangkau, Kabupaten Sambas. All Rights Reserved.</p>
